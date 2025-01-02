@@ -18,25 +18,13 @@
         public bool TryAddAllElectrons(int electronsToAdd, out int remainder)
         {
             remainder = electronsToAdd;
-            if (Full)
+            while (!Full)
             {
-                return false;
+                CurrentElectronCount++;
+                remainder--;
             }
 
-            while (remainder > 0)
-            {
-                if (!Full)
-                {
-                    CurrentElectronCount++;
-                    remainder--;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return remainder == 0;
         }
 
         public static OrbitalSet OfType(OrbitalType type)
