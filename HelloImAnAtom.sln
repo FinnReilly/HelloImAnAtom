@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{92C6C14E-E3F1-4569-938B-2A8FBD265C5E}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloImAnAtom", "src\HelloImAnAtom.csproj", "{A8FD91A0-61E6-415B-9609-CA56A4F27428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests\Tests.csproj", "{CBA0FDDF-518E-48B3-86A8-760933E7FACA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8FD91A0-61E6-415B-9609-CA56A4F27428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FD91A0-61E6-415B-9609-CA56A4F27428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FD91A0-61E6-415B-9609-CA56A4F27428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FD91A0-61E6-415B-9609-CA56A4F27428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA0FDDF-518E-48B3-86A8-760933E7FACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA0FDDF-518E-48B3-86A8-760933E7FACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA0FDDF-518E-48B3-86A8-760933E7FACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA0FDDF-518E-48B3-86A8-760933E7FACA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {784EA3B0-9E3B-4E8C-BB43-FAD56E51EDC9}
+	EndGlobalSection
+EndGlobal
