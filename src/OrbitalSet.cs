@@ -1,6 +1,6 @@
 ﻿namespace HelloImAnAtom
 {
-    public struct OrbitalSet
+    public class OrbitalSet
     {
         public OrbitalType Type { get; }
         public int MaxOrbitals { get; }

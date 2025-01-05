@@ -31,14 +31,24 @@
         public bool TryAddAllElectronsToOrbitals(int electronsToAdd, OrbitalType orbitalType, out int remainder)
         {
             remainder = electronsToAdd;
+
+            var electronsGoToThisLayer = Prev == null 
+                || orbitalType == OrbitalType.F
+                || !TryAddAllElectronsToOrbitals(remainder, (OrbitalType)(orbitalType + 1), out remainder);
+
+            if (!electronsGoToThisLayer)
+            {
+                return true;
+            }
+
             var targetOrbitals = OrbitalSets[(int)orbitalType];
             
-            if (!targetOrbitals.HasValue)
+            if (targetOrbitals == null)
             {
                 return false;
             }
 
-            return targetOrbitals.Value.TryAddAllElectrons(electronsToAdd, out remainder);
+            return targetOrbitals.TryAddAllElectrons(remainder, out remainder);
         }
 
         public bool TryAddAllElectrons(int electronsToAdd, out int remainder)
@@ -48,25 +58,24 @@
             {
                 var orbital = OrbitalSets[orbitalType];
 
-                if (orbital.HasValue)
+                if (orbital != null)
                 {
-                    if (orbital.Value.Full)
+                    if (orbital.Full)
                     {
                         continue;
                     }
 
-                    if (orbital.Value.TryAddAllElectrons(electronsToAdd, out electronsToAdd))
+                    if (TryAddAllElectronsToOrbitals(remainder, (OrbitalType)orbitalType, out remainder))
                     {
                         return true;
                     }
                 }
 
                 // electrons remain - decide whether to go to next orbital set or next shell
-                if (Prev == null
-                    || orbitalType > 0)
+                if (orbitalType > (int)OrbitalType.S)
                 {
                     Next ??= new ElectronShell(this);
-                    return Next.TryAddAllElectrons(electronsToAdd, out electronsToAdd);
+                    return Next.TryAddAllElectrons(remainder, out remainder);
                 }
             }
 

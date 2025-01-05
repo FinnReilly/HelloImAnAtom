@@ -9,6 +9,10 @@
             ProtonCount = atomicNumber;
             NeutronCount = atomicMass - atomicNumber;
             ElectronCount = atomicNumber;
+
+            var electronShell = new ElectronShell();
+            electronShell.TryAddAllElectrons(ElectronCount, out var remainder);
+            Shells = (electronShell.AllShells);
         }
 
         public int AtomicNumber { get; }
@@ -16,5 +20,6 @@
         public int ProtonCount { get; }
         public int NeutronCount { get; }
         public int ElectronCount { get; }
+        public IList<ElectronShell> Shells { get; } = new List<ElectronShell>();
     }
 }
