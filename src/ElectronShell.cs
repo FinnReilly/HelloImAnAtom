@@ -72,7 +72,7 @@
                 }
 
                 // electrons remain - decide whether to go to next orbital set or next shell
-                if (orbitalType > (int)OrbitalType.S)
+                if (orbitalType > (int)OrbitalType.S && remainder > 0)
                 {
                     Next ??= new ElectronShell(this);
                     return Next.TryAddAllElectrons(remainder, out remainder);
