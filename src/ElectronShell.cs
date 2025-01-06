@@ -34,7 +34,8 @@
 
             var electronsGoToThisLayer = Prev == null 
                 || orbitalType == OrbitalType.F
-                || !Prev.TryAddAllElectronsToOrbitals(remainder, (OrbitalType)(orbitalType + 1), out remainder);
+                || !Prev.OrbitalSetAvailable(orbitalType + 1)
+                || !Prev.TryAddAllElectronsToOrbitals(remainder, orbitalType + 1, out remainder);
 
             if (!electronsGoToThisLayer)
             {
@@ -50,6 +51,8 @@
 
             return targetOrbitals.TryAddAllElectrons(remainder, out remainder);
         }
+
+        public bool OrbitalSetAvailable(OrbitalType orbitalType) => !(OrbitalSets[(int)orbitalType]?.Full ?? true);
 
         public bool TryAddAllElectrons(int electronsToAdd, out int remainder)
         {
