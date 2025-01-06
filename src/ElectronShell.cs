@@ -34,7 +34,7 @@
 
             var electronsGoToThisLayer = Prev == null 
                 || orbitalType == OrbitalType.F
-                || !TryAddAllElectronsToOrbitals(remainder, (OrbitalType)(orbitalType + 1), out remainder);
+                || !Prev.TryAddAllElectronsToOrbitals(remainder, (OrbitalType)(orbitalType + 1), out remainder);
 
             if (!electronsGoToThisLayer)
             {

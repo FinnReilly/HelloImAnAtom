@@ -103,7 +103,6 @@ namespace Tests
         [Test]
         public void TestXenon()
         {
-
             // Arrange / Act
             var xenon = new Atom(54, 131);
 
@@ -132,7 +131,65 @@ namespace Tests
             Assert.That(xenon.Shells[3]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
             Assert.That(xenon.Shells[3]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
             Assert.That(xenon.Shells[3]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.True);
-            Assert.That(xenon.Shells[3]!.OrbitalSets[(int)OrbitalType.F]!.Full, Is.True);
+            Assert.That(xenon.Shells[3]!.OrbitalSets[(int)OrbitalType.F]!.CurrentElectronCount, Is.Zero);
+            Assert.That(xenon.Shells[4]!.ShellIndex, Is.EqualTo(4));
+            Assert.That(xenon.Shells[4]!.IsValence, Is.True);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.D]!.CurrentElectronCount, Is.Zero);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.False);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.F]!.CurrentElectronCount, Is.Zero);
+            Assert.That(xenon.Shells[4]!.OrbitalSets[(int)OrbitalType.F]!.Full, Is.False);
+        }
+
+        [Test]
+        public void TestRadon()
+        {
+            // Arrange / Act
+            var radon = new Atom(86, 222);
+
+            // Assert
+            Assert.That(radon.ProtonCount, Is.EqualTo(86));
+            Assert.That(radon.NeutronCount, Is.EqualTo(136));
+            Assert.That(radon.ElectronCount, Is.EqualTo(86));
+            Assert.That(radon.Shells.Count, Is.EqualTo(6));
+            Assert.That(radon.Shells[0]!.ShellIndex, Is.EqualTo(0));
+            Assert.That(radon.Shells[0]!.IsValence, Is.False);
+            Assert.That(radon.Shells[0]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[0]!.OrbitalSets[(int)OrbitalType.P], Is.Null);
+            Assert.That(radon.Shells[1]!.ShellIndex, Is.EqualTo(1));
+            Assert.That(radon.Shells[1]!.IsValence, Is.False);
+            Assert.That(radon.Shells[1]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[1]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(radon.Shells[1]!.OrbitalSets[(int)OrbitalType.D], Is.Null);
+            Assert.That(radon.Shells[2]!.ShellIndex, Is.EqualTo(2));
+            Assert.That(radon.Shells[2]!.IsValence, Is.False);
+            Assert.That(radon.Shells[2]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[2]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(radon.Shells[2]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.True);
+            Assert.That(radon.Shells[2]!.OrbitalSets[(int)OrbitalType.F], Is.Null);
+            Assert.That(radon.Shells[3]!.ShellIndex, Is.EqualTo(3));    
+            Assert.That(radon.Shells[3]!.IsValence, Is.False);
+            Assert.That(radon.Shells[3]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[3]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(radon.Shells[3]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.True);
+            Assert.That(radon.Shells[3]!.OrbitalSets[(int)OrbitalType.F]!.Full, Is.True);
+            Assert.That(radon.Shells[4]!.ShellIndex, Is.EqualTo(4));
+            Assert.That(radon.Shells[4]!.IsValence, Is.False);
+            Assert.That(radon.Shells[4]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[4]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(radon.Shells[4]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.True);
+            Assert.That(radon.Shells[4]!.OrbitalSets[(int)OrbitalType.F]!.CurrentElectronCount, Is.Zero);
+            Assert.That(radon.Shells[4]!.OrbitalSets[(int)OrbitalType.F]!.Full, Is.False);
+            Assert.That(radon.Shells[5]!.ShellIndex, Is.EqualTo(5));
+            Assert.That(radon.Shells[5]!.IsValence, Is.True);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.S]!.Full, Is.True);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.P]!.Full, Is.True);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.D]!.CurrentElectronCount, Is.Zero);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.D]!.Full, Is.False);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.F]!.CurrentElectronCount, Is.Zero);
+            Assert.That(radon.Shells[5]!.OrbitalSets[(int)OrbitalType.F]!.Full, Is.False);
+
         }
     }
 }
