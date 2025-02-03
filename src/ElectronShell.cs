@@ -44,12 +44,7 @@
 
             var targetOrbitalSet = OrbitalSets[(int)orbitalType];
             
-            if (targetOrbitalSet == null)
-            {
-                return false;
-            }
-
-            if(!targetOrbitalSet.TryAddAllElectrons(remainder, out remainder))
+            if (targetOrbitalSet == null || !targetOrbitalSet.TryAddAllElectrons(remainder, out remainder))
             {
                 return false;
             }
@@ -57,7 +52,7 @@
             if (targetOrbitalSet.Type == OrbitalType.D
                 && !targetOrbitalSet.Stable
                 && Next != null
-                && Next.OrbitalSets[(int)OrbitalType.S]!.TryStealAllElectrons(targetOrbitalSet.ElectronsToStabilise, out var electronsLeft))
+                && Next.OrbitalSets[(int)OrbitalType.S]!.TryStealAllElectrons(targetOrbitalSet.ElectronsToStabilise))
             {
                 remainder = targetOrbitalSet.ElectronsToStabilise;
                 return targetOrbitalSet.TryAddAllElectrons(remainder, out remainder);

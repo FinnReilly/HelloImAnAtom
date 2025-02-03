@@ -49,9 +49,9 @@
             return remainder == 0;
         }
 
-        public bool TryStealAllElectrons(int electronsToSteal, out int remainder)
+        public bool TryStealAllElectrons(int electronsToSteal)
         {
-            remainder = electronsToSteal;
+            var remainder = electronsToSteal;
             if (electronsToSteal > CurrentElectronCount)
             {
                 return false;
