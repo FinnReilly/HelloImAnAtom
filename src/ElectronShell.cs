@@ -42,14 +42,28 @@
                 return true;
             }
 
-            var targetOrbitals = OrbitalSets[(int)orbitalType];
+            var targetOrbitalSet = OrbitalSets[(int)orbitalType];
             
-            if (targetOrbitals == null)
+            if (targetOrbitalSet == null)
             {
                 return false;
             }
 
-            return targetOrbitals.TryAddAllElectrons(remainder, out remainder);
+            if(!targetOrbitalSet.TryAddAllElectrons(remainder, out remainder))
+            {
+                return false;
+            }
+
+            if (targetOrbitalSet.Type == OrbitalType.D
+                && !targetOrbitalSet.Stable
+                && Next != null
+                && Next.OrbitalSets[(int)OrbitalType.S]!.TryStealAllElectrons(targetOrbitalSet.ElectronsToStabilise, out var electronsLeft))
+            {
+                remainder = targetOrbitalSet.ElectronsToStabilise;
+                return targetOrbitalSet.TryAddAllElectrons(remainder, out remainder);
+            }
+
+            return true;
         }
 
         public bool OrbitalSetAvailable(OrbitalType orbitalType) => !(OrbitalSets[(int)orbitalType]?.Full ?? true);
